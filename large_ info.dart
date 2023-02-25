@@ -1,5 +1,5 @@
-import 'package:first/Large_animals.dart';
-import 'package:first/PETS_OR_LARGE.dart';
+import 'package:first/modules/large_animals/Large_animals.dart';
+import 'package:first/modules/PETS_OR_LARGE/PETS_OR_LARGE.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class Large_info extends StatefulWidget{

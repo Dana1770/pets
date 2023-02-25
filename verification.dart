@@ -1,7 +1,9 @@
+import 'package:first/shared/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Verification_code extends StatelessWidget{
+  var code=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,19 +17,11 @@ class Verification_code extends StatelessWidget{
         child: Column(
 
           children: [
-            Image(image: NetworkImage("https://img.freepik.com/free-vector/employee-working-office-thinking-solutions-problem-solving-business-theme_1150-37473.jpg"),width: 200,),
+            small_image("https://img.freepik.com/free-vector/employee-working-office-thinking-solutions-problem-solving-business-theme_1150-37473.jpg"),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: TextFormField(
-                onChanged: (val){print(val);},
-                onFieldSubmitted: (v){print(v);},
-                decoration: InputDecoration(
-                  hintText: "Verification code",
-                  border:OutlineInputBorder() ,
-
-
-                ),
-                keyboardType: TextInputType.number,
+              child: defult_text_field("Verification code", code,  "Verification code isn't valid"
               ),
             ),
             SizedBox(height: 10,),

@@ -1,8 +1,21 @@
+import 'package:first/shared/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class New_password extends StatelessWidget{
+class New_password extends StatefulWidget{
+  @override
+  State<New_password> createState() => _New_passwordState();
+}
+
+class _New_passwordState extends State<New_password> {
+  bool is_pass=true;
+
   var password=TextEditingController();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,38 +30,31 @@ class New_password extends StatelessWidget{
           child: Column(
 
             children: [
-              Image(image: NetworkImage("https://img.freepik.com/premium-vector/bronze-lock-icon-white-background-flat-design-illustration-stock-vector-graphics_668389-92.jpg?w=2000"),width: 200,),
+              small_image("https://img.freepik.com/premium-vector/bronze-lock-icon-white-background-flat-design-illustration-stock-vector-graphics_668389-92.jpg?w=2000"),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: TextFormField(
-                  controller: password,
-                  onChanged: (val){print(val);},
-                  onFieldSubmitted: (v){print(v);},
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    border:OutlineInputBorder() ,
-                    suffixIcon: Icon(Icons.remove_red_eye_sharp,),
+                child: password_field(password, "password",is_password: is_pass,
+                  suffix:IconButton(icon: Icon(Icons.remove_red_eye_sharp,),
+                    onPressed: () {
+                      setState() {
+                        is_pass=!is_pass;
 
-                  ),
-                  keyboardType: TextInputType.visiblePassword,
-                ),
-              ),
+                      }
+                    },),),),
+
               SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: TextFormField(
-                  controller: password,
-                  onChanged: (val){print(val);},
-                  onFieldSubmitted: (v){print(v);},
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: "Confirm new password",
-                    border:OutlineInputBorder() ,
-                    suffixIcon: Icon(Icons.remove_red_eye_sharp,),
+                child: password_field(password, "confirm new password",
+                  is_password: is_pass,
+                  suffix:IconButton(icon: Icon(is_pass?Icons.visibility_off:Icons.visibility),
+                    onPressed: () {
 
-                  ),
-                  keyboardType: TextInputType.visiblePassword,
+                    setState(() {
+                      is_pass=!is_pass;
+                    });
+
+                    },),
                 ),
               ),
               SizedBox(height: 10,),
@@ -59,5 +65,4 @@ class New_password extends StatelessWidget{
       ),
     );
   }
-
 }

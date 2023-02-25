@@ -1,5 +1,5 @@
-import 'package:first/PETS_OR_LARGE.dart';
-import 'package:first/small_animal.dart';
+import 'package:first/modules/PETS_OR_LARGE/PETS_OR_LARGE.dart';
+import 'package:first/modules/small_animal/small_animal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class small_info extends StatefulWidget{
