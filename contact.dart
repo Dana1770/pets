@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/components/components.dart';
+
 class Contact extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class Contact extends StatelessWidget{
         ],
 
       ),
+      endDrawer:Draw(context),
       body: Column(
         children: [
           TextFormField(),
