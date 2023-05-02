@@ -3,12 +3,10 @@ import 'package:first/modules/start/start.dart';
 import 'package:first/shared/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 class SignUP extends StatefulWidget{
   @override
   State<SignUP> createState() => _SignUPState();
 }
-
 class _SignUPState extends State<SignUP> {
   @override
   bool is_pass=true;
@@ -17,13 +15,17 @@ class _SignUPState extends State<SignUP> {
   var full_name=TextEditingController();
   var user_name=TextEditingController();
   var password=TextEditingController();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Create_Database();
+  }
   @override
   Widget build(BuildContext context) {
    return Scaffold(
      body:  SafeArea(
        child: Padding(
          padding:  EdgeInsets.only(top: 25.0,left: 30,right: 30,bottom: 3),
-
            child: Form(
              key: Formkey,
              child: SingleChildScrollView(
@@ -76,7 +78,8 @@ class _SignUPState extends State<SignUP> {
                                ),
                              ),
                              SizedBox(height: 10,),
-                             defult_text_field("Email",
+                             defult_text_field(
+                                 "Email",
                                  email_controller,
                                 "Email isn't valid"
 
@@ -111,6 +114,7 @@ class _SignUPState extends State<SignUP> {
                                        print(full_name.text);
                                        print(user_name.text);
                                        print(password.text);
+                                       Insert_Database(email_controller.text, user_name.text, full_name.text, password.text);
                                        Navigator.push(context,
                                          MaterialPageRoute(
                                              builder: (context)=>Main()),
@@ -151,4 +155,5 @@ class _SignUPState extends State<SignUP> {
    );
 
   }
+
 }

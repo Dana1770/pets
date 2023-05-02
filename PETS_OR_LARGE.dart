@@ -23,6 +23,7 @@ class _choiceState extends State<choice> {
   Widget build(BuildContext context) {
    return  Scaffold(
      appBar: AppBar(
+       automaticallyImplyLeading: false,
          backgroundColor: Colors.brown.withGreen(6).withOpacity(0.5),
          title: Text("Petty world",style: TextStyle(fontSize: 25,
          fontWeight: FontWeight.bold,

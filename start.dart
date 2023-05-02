@@ -1,9 +1,16 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:first/modules/PETS_OR_LARGE/PETS_OR_LARGE.dart';
 import 'package:first/modules/sign%20up/sign%20up.dart';
 import 'package:first/modules/verification/verification.dart';
 import 'package:first/shared/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../shared/constant/links.dart';
+import '../constant/links.dart';
+
+import "package:http/http.dart"as http;
 
 class Main extends StatefulWidget{
   @override
@@ -67,10 +74,15 @@ class _MainState extends State<Main> {
                                      children: [
                                        Icon(Icons.facebook,size: 25,),
                                        SizedBox(width: 5,),
-                                       Text("Login with Facebook",style: TextStyle(fontSize: 16,),),
+                                       TextButton(child: Text("Login with Facebook",style: TextStyle(fontSize: 16,),),
+                                         onPressed:() {
+                                         Link("www.facebook.com");
+                                         },),
                                      ],
                                    )),
-                                    defult_text_field("Email", email_controller,"Email isn't valid"
+                                    defult_text_field("Email",
+                                        email_controller,
+                                        "Email isn't valid"
                                      ),
                                     SizedBox(height: 5,),
                                     password_field(password,"Password",is_password: is_pass,
@@ -87,13 +99,15 @@ class _MainState extends State<Main> {
 
                                         child: ElevatedButton(
                                           onPressed: (){
-                                  if(Formkey.currentState!.validate()){
-                                            print(email_controller.text);
-                                            print(password.text);
-                                            Navigator.push(context,
-                                              MaterialPageRoute(
-                                                  builder: (context)=>choice()),
-                                            );}
+
+                                            if(Formkey.currentState!.validate()){
+                                              print(email_controller.text);
+                                              print(password.text);
+                                              Navigator.push(context,
+                                                MaterialPageRoute(
+                                            builder: (context)=>choice()),
+                                                                           );};
+
 
 
                                         }, child:Text("login"),)),
@@ -144,4 +158,28 @@ class _MainState extends State<Main> {
 
     );
   }
+ /* void _login()async{
+    if(Formkey.currentState!.validate()){
+      print(email_controller.text);
+      print(password.text);
+      String email=email_controller.text;
+      String Password=password.text;
+      http.Response R=await http.post(Uri.parse(login),
+          body:json.encode({
+            "EMAIL":email,
+            "PASSWORD":password
+          })
+      ) ;
+      if(R.statusCode==200){
+        var body=json.decode(R.body);
+        if(!mounted)return;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(body['message'])));
+      }
+
+      Navigator.push(context,
+        MaterialPageRoute(
+            builder: (context)=>choice()),
+      );}
+
+  }*/
 }
